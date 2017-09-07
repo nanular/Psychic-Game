@@ -4,8 +4,15 @@ $(document).ready(function()
 var totalWins = 0;
 var totalLosses = 0;
 var guessCounter = 9;
-var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
-	"q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+var alphabet =
+[
+"a", "b", "c", "d", "e", "f", "g",
+"h", "i", "j", "k", "l", "m", "n",
+"o", "p", "q", "r", "s", "t", "u",
+"v", "w", "x", "y", "z"
+];
+
 var computerChoice = "";
 var userGuess = "";
 var userGuessArray = [];
@@ -20,9 +27,15 @@ console.log("Answer: " + computerChoice);
 function isGuessCorrect(key)
 {
 	userGuess = String.fromCharCode(key.keyCode);
+	var ASCIIcode = userGuess.charCodeAt(0);
 	if(userGuess === userGuess.toUpperCase())
 	{
 		userGuess = userGuess.toLowerCase();
+	}
+
+	if(ASCIIcode < 65 || (ASCIIcode > 90 && ASCIIcode < 97) || ASCIIcode > 122)
+	{
+		return;
 	}
 
 	console.log(userGuess);
