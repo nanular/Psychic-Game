@@ -1,3 +1,6 @@
+$(document).ready(function()
+{
+
 var totalWins = 0;
 var totalLosses = 0;
 var guessCounter = 9;
@@ -13,7 +16,8 @@ window.addEventListener("keypress", isGuessCorrect, false);
 computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
 console.log("Answer: " + computerChoice);
 
-function isGuessCorrect(key) {
+function isGuessCorrect(key)
+{
 	userGuess = String.fromCharCode(key.keyCode);
 	console.log(userGuess);
 	
@@ -68,3 +72,4 @@ function isGuessCorrect(key) {
 
 
 
+})
