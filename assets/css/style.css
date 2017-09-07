@@ -12,12 +12,13 @@ h1
 .instructions
 {
 	text-align: center;
-	font-size: 2.2em;
+	font-size: 2em;
 }
 
 small
 {
 	font-size: 0.4em;
+	color: darkgray;
 }
 
 .jumbotron

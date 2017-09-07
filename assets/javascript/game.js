@@ -4,9 +4,11 @@ $(document).ready(function()
 var totalWins = 0;
 var totalLosses = 0;
 var guessCounter = 9;
-var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
+	"q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var computerChoice = "";
 var userGuess = "";
+var userGuessAltCase = "";
 var userGuessArray = [];
 var numSameGuesses = 0;
 
@@ -19,9 +21,26 @@ console.log("Answer: " + computerChoice);
 function isGuessCorrect(key)
 {
 	userGuess = String.fromCharCode(key.keyCode);
+	userGuessAltCase = getAltCase();
+
+	function getAltCase()
+	{
+		if(userGuess === userGuess.toUpperCase())
+		{
+			return userGuess.toLowerCase();
+		}
+
+		else
+		{
+			return userGuess.toUpperCase();
+		}
+	}
+
+
 	console.log(userGuess);
 	
-	if (userGuess == computerChoice) {
+	if (userGuess === computerChoice || userGuessAltCase === computerChoice)
+	{
 		alert("You guessed the correct letter!");
 		totalWins++;
 		guessCounter = 9;
@@ -35,28 +54,34 @@ function isGuessCorrect(key)
 		console.log("Answer: " + computerChoice);
 	}
 
-	else if (guessCounter > 1) {
+	else if (guessCounter > 1)
+	{
 		
-		if (userGuessArray.indexOf(" " + userGuess) >= 0 && guessCounter !== 9) {
+		if (userGuessArray.indexOf(" " + userGuess) >= 0 && guessCounter !== 9)
+		{
 			alert("You've already guessed " + userGuess + " for this round. Please choose a new letter.");
 			numSameGuesses++;
 
-			if (numSameGuesses > 2) {
-				alert("What are you? A wise guy? Try guessing a NEW letter.");
+			if (numSameGuesses > 2)
+			{
+				alert("Alright wise guy.  Let's focus here.  Try guessing a NEW letter.");
 				numSameGuesses = 0;
 			}
 
 		}
 
-		else {
+		else
+		{
 			guessCounter--;
 			userGuessArray.push(" " + userGuess);
+			userGuessArray.push(" " + userGuessAltCase);
 			document.getElementById("guesses").innerHTML = "Letters Guessed: " + userGuessArray;
 			document.getElementById("guessesRemain").innerHTML = "Guesses Remaining: " + guessCounter;
 		}
 	}
 	
-	else {
+	else
+	{
 		totalLosses++;
 		guessCounter = 9;
 		userGuessArray = [];

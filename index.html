@@ -16,19 +16,22 @@
 </head>	
 
 <body>
-	<h1>The Psychic Game</h1>
+	<h1 class="display1">The Psychic Game</h1>
 
-	<p class="jumbotron container instructions">I'm thinking of a letter.  Can you guess it?<br>
-		<small>(Don't even think of viewing the console log!)</small></p>
+	<div class="jumbotron container">
+		<p class="instructions">I'm thinking of a letter.  Can you guess it?<br>
+			<small>(Don't even think of viewing the console log!)</small></p>
 
-	<p id="wins">Total Wins: </p>
+		<br><br>
 
-	<p id="losses">Total Losses: </p>
+		<p id="wins">Total Wins: </p>
 
-	<p id="guessesRemain">Guesses Remaining: </p>
+		<p id="losses">Total Losses: </p>
 
-	<p id="guesses">Letters Guessed: </p>
+		<p id="guessesRemain">Guesses Remaining: </p>
 
+		<p id="guesses">Letters Guessed: </p>
+	</div>
 
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -44,9 +47,7 @@
 	crossorigin="anonymous"></script>
 
 	<!-- My JavaScript File -->
-	<script src="assets/javascript/java.js"></script>	
+	<script src="assets/javascript/game.js"></script>	
 </body>
-
-	<script type="text/javascript" src="assets/javascript/game.js"></script>
 
 </html> 
