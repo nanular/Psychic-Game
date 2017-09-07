@@ -8,7 +8,6 @@ var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 	"q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var computerChoice = "";
 var userGuess = "";
-var userGuessAltCase = "";
 var userGuessArray = [];
 var numSameGuesses = 0;
 
@@ -21,25 +20,15 @@ console.log("Answer: " + computerChoice);
 function isGuessCorrect(key)
 {
 	userGuess = String.fromCharCode(key.keyCode);
-	userGuessAltCase = getAltCase();
-
-	function getAltCase()
+	if(userGuess === userGuess.toUpperCase())
 	{
-		if(userGuess === userGuess.toUpperCase())
-		{
-			return userGuess.toLowerCase();
-		}
-
-		else
-		{
-			return userGuess.toUpperCase();
-		}
+		userGuess = userGuess.toLowerCase();
 	}
-
 
 	console.log(userGuess);
 	
-	if (userGuess === computerChoice || userGuessAltCase === computerChoice)
+
+	if (userGuess === computerChoice)
 	{
 		alert("You guessed the correct letter!");
 		totalWins++;
@@ -74,7 +63,6 @@ function isGuessCorrect(key)
 		{
 			guessCounter--;
 			userGuessArray.push(" " + userGuess);
-			userGuessArray.push(" " + userGuessAltCase);
 			document.getElementById("guesses").innerHTML = "Letters Guessed: " + userGuessArray;
 			document.getElementById("guessesRemain").innerHTML = "Guesses Remaining: " + guessCounter;
 		}
